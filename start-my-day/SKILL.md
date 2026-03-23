@@ -253,7 +253,7 @@ tags: ["llm-generated", "daily-paper-recommend"]
 - **机构**：[机构名称]
 - **链接**：[arXiv](链接) | [PDF](链接)
 - **来源**：[arXiv]
-- **笔记**：[[已有笔记路径]] 或 <<无>>
+- **笔记**：[[已有笔记路径]] 或 —
 
 **一句话总结**：[一句话概括论文的核心贡献]
 
@@ -274,7 +274,7 @@ tags: ["llm-generated", "daily-paper-recommend"]
 - **Affiliation**: [affiliation or "Not specified"]
 - **Links**: [arXiv](link) | [PDF](link)
 - **Source**: arXiv
-- **Notes**: [[existing_note_path]] or <<None>>
+- **Notes**: [[existing_note_path]] or —
 
 **One-line Summary**: [one-line summary of core contribution]
 

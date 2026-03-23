@@ -152,7 +152,7 @@ cat conf_papers_filtered.json
 - **会议**：{CVPR/ICLR/...} {年份}
 - **引用**：{citationCount} (influential: {influentialCitationCount})
 - **链接**：[DBLP](链接) | [arXiv](链接) | [PDF](链接)
-- **笔记**：[[已有笔记路径]] 或 <<无>>
+- **笔记**：[[已有笔记路径]] 或 —
 
 **一句话总结**：[一句话概括论文的核心贡献]
 
@@ -174,7 +174,7 @@ cat conf_papers_filtered.json
 - **Conference**: {CVPR/ICLR/...} {year}
 - **Citations**: {citationCount} (influential: {influentialCitationCount})
 - **Links**: [DBLP](link) | [arXiv](link) | [PDF](link)
-- **Notes**: [[existing_note_path]] or <<None>>
+- **Notes**: [[existing_note_path]] or —
 
 **One-line Summary**: [one-line summary of core contribution]
 
