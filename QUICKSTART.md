@@ -62,13 +62,13 @@ Copy-Item config.yaml "$env:OBSIDIAN_VAULT_PATH\99_System\Config\research_intere
 
 ```bash
 # macOS/Linux
-cp -r evil-read-arxiv/start-my-day ~/.claude/skills/
+cp -r evil-read-arxiv/paper-daily ~/.claude/skills/
 cp -r evil-read-arxiv/paper-analyze ~/.claude/skills/
 cp -r evil-read-arxiv/paper-extract-images ~/.claude/skills/
 cp -r evil-read-arxiv/paper-search ~/.claude/skills/
 
 # Windows PowerShell
-Copy-Item -Recurse evil-read-arxiv\start-my-day $env:USERPROFILE\.claude\skills\
+Copy-Item -Recurse evil-read-arxiv\paper-daily $env:USERPROFILE\.claude\skills\
 Copy-Item -Recurse evil-read-arxiv\paper-analyze $env:USERPROFILE\.claude\skills\
 Copy-Item -Recurse evil-read-arxiv\paper-extract-images $env:USERPROFILE\.claude\skills\
 Copy-Item -Recurse evil-read-arxiv\paper-search $env:USERPROFILE\.claude\skills\
@@ -154,7 +154,7 @@ paper-analyze 2602.12345
 
 ### 问题：关键词自动链接不准确
 
-**解决**：编辑 `start-my-day/scripts/link_keywords.py` 中的 `COMMON_WORDS` 集合，添加你不需要自动链接的词。
+**解决**：编辑 `paper-daily/scripts/link_keywords.py` 中的 `COMMON_WORDS` 集合，添加你不需要自动链接的词。
 
 ## 需要帮助？
 

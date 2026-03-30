@@ -39,7 +39,7 @@ except ImportError:
 # 复用 search_arxiv.py 的评分函数
 # ---------------------------------------------------------------------------
 _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-_START_MY_DAY_SCRIPTS = os.path.join(os.path.dirname(os.path.dirname(_SCRIPT_DIR)), 'start-my-day', 'scripts')
+_START_MY_DAY_SCRIPTS = os.path.join(os.path.dirname(os.path.dirname(_SCRIPT_DIR)), 'paper-daily', 'scripts')
 if _START_MY_DAY_SCRIPTS not in sys.path:
     sys.path.insert(0, _START_MY_DAY_SCRIPTS)
 

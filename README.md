@@ -16,11 +16,11 @@
 | 日期 | 版本 | 更新内容 |
 |------|------|----------|
 | 2026-03-13 | v1.1 | 新增 `paper-top-conf` 技能：支持搜索 CVPR/ICCV/ECCV/ICLR/AAAI/NeurIPS/ICML 等顶级会议论文，基于 DBLP + Semantic Scholar 双数据源，独立配置文件，三维评分推荐 |
-| 2026-03-01 | v1.0 | 初始版本：start-my-day 每日推荐、paper-analyze 论文分析、paper-extract-images 图片提取、paper-search 论文搜索 |
+| 2026-03-01 | v1.0 | 初始版本：paper-daily 每日推荐、paper-analyze 论文分析、paper-extract-images 图片提取、paper-search 论文搜索 |
 
 ## 功能特点
 
-### 1. start-my-day - 每日论文推荐
+### 1. paper-daily - 每日论文推荐
 - 从 arXiv 搜索最近一个月的论文
 - 从 Semantic Scholar 搜索过去一年的高热度论文
 - 基于相关性、新近性、热门度、质量四个维度综合评分
@@ -75,13 +75,13 @@
 1. 将此仓库克隆或复制到你的 Claude Code skills 目录：
    ```bash
    # Windows PowerShell
-   Copy-Item -Recurse evil-read-arxiv\start-my-day $env:USERPROFILE\.claude\skills\
+   Copy-Item -Recurse evil-read-arxiv\paper-daily $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-analyze $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-extract-images $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-search $env:USERPROFILE\.claude\skills\
 
    # macOS/Linux
-   cp -r evil-read-arxiv/start-my-day ~/.claude/skills/
+   cp -r evil-read-arxiv/paper-daily ~/.claude/skills/
    cp -r evil-read-arxiv/paper-analyze ~/.claude/skills/
    cp -r evil-read-arxiv/paper-extract-images ~/.claude/skills/
    cp -r evil-read-arxiv/paper-search ~/.claude/skills/
@@ -235,7 +235,7 @@ evil-read-arxiv/
 ├── QUICKSTART.md             # 快速开始指南
 ├── config.example.yaml       # 配置模板（需要复制并修改）
 ├── requirements.txt          # Python 依赖
-├── start-my-day/             # 每日推荐技能
+├── paper-daily/             # 每日推荐技能
 │   ├── SKILL.md              # 技能定义文件
 │   └── scripts/
 │       ├── search_arxiv.py   # arXiv/Semantic Scholar 搜索脚本
@@ -302,7 +302,7 @@ A:
 2. 检查 arXiv ID 格式是否正确（如 2602.12345）
 
 ### Q: 关键词自动链接不准确？
-A: 可以在 `start-my-day/scripts/link_keywords.py` 中修改 `COMMON_WORDS` 集合，添加你不需要自动链接的词
+A: 可以在 `paper-daily/scripts/link_keywords.py` 中修改 `COMMON_WORDS` 集合，添加你不需要自动链接的词
 
 ### Q: "Papers directory not found" 错误？
 A:
@@ -332,7 +332,7 @@ python scripts/search_arxiv.py --top-n 15
 
 ### 修改评分权重
 
-在 `start-my-day/scripts/search_arxiv.py` 的 `calculate_recommendation_score` 函数中调整权重。
+在 `paper-daily/scripts/search_arxiv.py` 的 `calculate_recommendation_score` 函数中调整权重。
 
 ## 工作原理
 

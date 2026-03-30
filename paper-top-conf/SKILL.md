@@ -15,7 +15,7 @@ You are the Conference Paper Recommender for OrbitOS.
 
 ## 配置说明
 
-本 skill 使用独立配置文件 `paper-top-conf.yaml`（位于 skill 目录下），与 start-my-day 的 `research_interests.yaml` 完全独立：
+本 skill 使用独立配置文件 `paper-top-conf.yaml`（位于 skill 目录下），与 paper-daily 的 `research_interests.yaml` 完全独立：
 
 ```yaml
 # paper-top-conf.yaml
@@ -50,10 +50,10 @@ top_n: 10                    # 返回论文数量
 
 ## 步骤2：扫描已有笔记构建索引
 
-复用 `start-my-day` 的扫描脚本：
+复用 `paper-daily` 的扫描脚本：
 
 ```bash
-cd "$SKILL_DIR/../start-my-day"
+cd "$SKILL_DIR/../paper-daily"
 python scripts/scan_existing_notes.py \
   --vault "$OBSIDIAN_VAULT_PATH" \
   --output "$SKILL_DIR/existing_notes_index.json"
@@ -80,7 +80,7 @@ python scripts/search_conf_papers.py \
 3. **S2 补充**：仅对过滤后的论文查询 Semantic Scholar，获取摘要和引用数
 4. **三维评分**：相关性(40%) + 热门度(40%) + 质量(20%)，排序取 top N
 
-**评分说明**（与 start-my-day 的区别：无新近性维度，因为年份由用户指定）：
+**评分说明**（与 paper-daily 的区别：无新近性维度，因为年份由用户指定）：
 
 ```yaml
 推荐评分 =
@@ -304,10 +304,10 @@ cat conf_papers_filtered.json
 
 ## 步骤6：关键词链接
 
-复用 `start-my-day` 的关键词链接脚本：
+复用 `paper-daily` 的关键词链接脚本：
 
 ```bash
-cd "$SKILL_DIR/../start-my-day"
+cd "$SKILL_DIR/../paper-daily"
 python scripts/link_keywords.py \
   --index "$SKILL_DIR/existing_notes_index.json" \
   --input "$OBSIDIAN_VAULT_PATH/10_Daily/{年份}_顶会论文推荐.md" \
@@ -320,14 +320,14 @@ python scripts/link_keywords.py \
 - **三维评分**：相关性(40%) + 热门度(40%) + 质量(20%)，无新近性维度
 - **文件名以年份**：`10_Daily/{年份}_顶会论文推荐.md`
 - **两阶段过滤**：先用标题关键词轻量过滤，再对候选论文查 S2，避免大量 API 调用
-- **论文增加会议和引用字段**：区别于 start-my-day 的 arXiv 论文
+- **论文增加会议和引用字段**：区别于 paper-daily 的 arXiv 论文
 - **前 3 篇特殊处理**：
   - 论文名称用 wikilink 格式：`[[论文名字]]`
   - 有 arXiv ID：提取图片 + 深度分析
   - 无 arXiv ID：标注"无 arXiv 版本"，跳过图片和深度分析
 - **其他论文**：只写基本信息
 - **双年会议处理**：ICCV 偶数年、ECCV 奇数年无结果，正常跳过
-- **自动关键词链接**：复用 start-my-day 的 link_keywords.py
+- **自动关键词链接**：复用 paper-daily 的 link_keywords.py
 
 # 错误处理
 
@@ -348,7 +348,7 @@ python scripts/link_keywords.py \
 - **评分维度**：相关性 + 热门度 + 质量（无新近性）
 - **输出**：年度推荐笔记
 
-## start-my-day (每日推荐)
+## paper-daily (每日推荐)
 - **目的**：每日 arXiv 新论文推荐
 - **数据源**：arXiv + Semantic Scholar
 - **搜索范围**：近一个月 + 近一年热门论文
@@ -377,7 +377,7 @@ python scripts/link_keywords.py \
 
 2. **扫描现有笔记构建索引**
    ```bash
-   cd "$SKILL_DIR/../start-my-day"
+   cd "$SKILL_DIR/../paper-daily"
    python scripts/scan_existing_notes.py \
      --vault "$OBSIDIAN_VAULT_PATH" \
      --output "$SKILL_DIR/existing_notes_index.json"
@@ -437,6 +437,6 @@ python scripts/link_keywords.py \
 - Python 3.x
 - PyYAML
 - 网络连接（DBLP API + Semantic Scholar API）
-- `start-my-day` skill（复用 scan_existing_notes.py, link_keywords.py, search_arxiv.py 的评分函数）
+- `paper-daily` skill（复用 scan_existing_notes.py, link_keywords.py, search_arxiv.py 的评分函数）
 - `paper-extract-images` skill（提取论文图片，仅限有 arXiv ID 的论文）
 - `paper-analyze` skill（生成详细报告，仅限有 arXiv ID 的论文）

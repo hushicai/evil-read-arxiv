@@ -13,7 +13,7 @@ This is a collection of Claude Code Skills for automating research paper search,
 
 ## Features
 
-### 1. start-my-day - Daily Paper Recommendations
+### 1. paper-daily - Daily Paper Recommendations
 - Search papers from arXiv in the last month
 - Search highly-cited papers from Semantic Scholar in the past year
 - Comprehensive scoring based on relevance, recency, popularity, and quality
@@ -61,13 +61,13 @@ This is a collection of Claude Code Skills for automating research paper search,
 1. Clone or copy this repository to your Claude Code skills directory:
    ```bash
    # Windows PowerShell
-   Copy-Item -Recurse evil-read-arxiv\start-my-day $env:USERPROFILE\.claude\skills\
+   Copy-Item -Recurse evil-read-arxiv\paper-daily $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-analyze $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-extract-images $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-search $env:USERPROFILE\.claude\skills\
 
    # macOS/Linux
-   cp -r evil-read-arxiv/start-my-day ~/.claude/skills/
+   cp -r evil-read-arxiv/paper-daily ~/.claude/skills/
    cp -r evil-read-arxiv/paper-analyze ~/.claude/skills/
    cp -r evil-read-arxiv/paper-extract-images ~/.claude/skills/
    cp -r evil-read-arxiv/paper-search ~/.claude/skills/
@@ -225,7 +225,7 @@ evil-read-arxiv/
 ├── QUICKSTART.md             # Quick start guide
 ├── config.example.yaml       # Config template
 ├── requirements.txt          # Python dependencies
-├── start-my-day/             # Daily recommendation skill
+├── paper-daily/             # Daily recommendation skill
 │   ├── SKILL.md              # Skill definition
 │   └── scripts/
 │       ├── search_arxiv.py   # arXiv/Semantic Scholar search script
@@ -287,7 +287,7 @@ A:
 2. Check if arXiv ID format is correct (e.g., 2602.12345)
 
 ### Q: Auto keyword linking not accurate?
-A: You can modify the `COMMON_WORDS` set in `start-my-day/scripts/link_keywords.py` to add words you don't want auto-linked
+A: You can modify the `COMMON_WORDS` set in `paper-daily/scripts/link_keywords.py` to add words you don't want auto-linked
 
 ### Q: "Papers directory not found" error?
 A:
@@ -317,7 +317,7 @@ python scripts/search_arxiv.py --top-n 15
 
 ### Modify Scoring Weights
 
-Adjust weights in the `calculate_recommendation_score` function in `start-my-day/scripts/search_arxiv.py`.
+Adjust weights in the `calculate_recommendation_score` function in `paper-daily/scripts/search_arxiv.py`.
 
 ## How It Works
 
