@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 关键词链接脚本
-用于 start-my-day skill，在文本中查找关键词并替换为 wikilink
+用于 paper-daily skill，在文本中查找关键词并替换为 wikilink
 """
 
 import re

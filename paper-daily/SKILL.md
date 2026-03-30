@@ -1,5 +1,5 @@
 ---
-name: start-my-day
+name: paper-daily
 description: 论文阅读工作流启动 - 生成今日论文推荐笔记 / Paper reading workflow starter - Generate daily paper recommendations
 ---
 
@@ -54,6 +54,8 @@ Then use this language setting throughout the workflow:
 ## 工作流程概述
 
 本 skill 使用 Python 脚本调用 arXiv API 搜索论文，解析 XML 结果并根据研究兴趣进行筛选和评分。
+
+Read `references/prerequisites.md` before run any script.
 
 ## 步骤1：收集上下文（静默）
 
@@ -461,7 +463,7 @@ python scripts/link_keywords.py \
 
 # 与其他 skills 的区别
 
-## start-my-day (本skill)
+## paper-daily (本skill)
 - **目的**：从大范围搜索中筛选推荐论文，生成每日推荐笔记
 - **搜索范围**：近一个月 + 近一年热门/优质论文
 - **内容**：推荐列表
@@ -484,16 +486,16 @@ python scripts/link_keywords.py \
   - 包含所有核心信息：研究问题、方法概述、方法架构、关键创新、实验结果、深度分析、相关论文对比等
   - **图文并茂**：论文中的所有图片都要用上（核心架构图、方法图、实验结果图等）
 - **适用**：用户主动调用 `/paper-analyze [论文ID]` 或论文标题
-- **重要要求**：无论是start-my-day整理的论文，还是用户主动查看的论文，都要图文并茂
+- **重要要求**：无论是paper-daily整理的论文，还是用户主动查看的论文，都要图文并茂
 
 # 使用说明
 
-当用户输入 "start my day" 时，按以下步骤执行：
+当用户输入 "paper daily" 时，按以下步骤执行：
 
 **日期参数支持**：
 - 无参数：生成当天的论文推荐笔记
 - 有参数（YYYY-MM-DD）：生成指定日期的论文推荐笔记
-  - 例如：`/start-my-day 2026-02-27`
+  - 例如：`/paper-daily 2026-02-27`
 
 ## 自动执行流程
 

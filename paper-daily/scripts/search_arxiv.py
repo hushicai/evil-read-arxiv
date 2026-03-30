@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 arXiv + Semantic Scholar 混合架构论文搜索脚本
-用于 start-my-day skill，搜索最近一个月和最近一年的极火、极热门、极优质论文
+用于 paper-daily skill，搜索最近一个月和最近一年的极火、极热门、极优质论文
 """
 
 import xml.etree.ElementTree as ET
@@ -24,7 +24,7 @@ def title_to_note_filename(title: str) -> str:
     """将论文标题转换为 Obsidian 笔记文件名（与 generate_note.py 保持一致）。
 
     使用与 paper-analyze/scripts/generate_note.py 完全相同的规则，
-    确保 start-my-day 生成的 wikilink 路径能正确指向 paper-analyze 创建的文件。
+    确保 paper-daily 生成的 wikilink 路径能正确指向 paper-analyze 创建的文件。
     """
     filename = re.sub(r'[ /\\:*?"<>|]+', '_', title).strip('_')
     return filename
@@ -986,7 +986,7 @@ def main():
     top_papers = unique_papers[:args.top_n]
 
     # 为每篇论文补充 note_filename，与 generate_note.py 的文件名规则保持一致
-    # 这样 start-my-day 生成的 wikilink 可以直接使用此字段，无需自行推断
+    # 这样 paper-daily 生成的 wikilink 可以直接使用此字段，无需自行推断
     for paper in top_papers:
         paper['note_filename'] = title_to_note_filename(paper.get('title', ''))
 

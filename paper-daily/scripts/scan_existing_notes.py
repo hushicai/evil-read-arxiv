@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 扫描现有笔记构建索引
-用于 start-my-day skill，扫描 vault 中的现有笔记并构建关键词到笔记路径的映射表
+用于 paper-daily skill，扫描 vault 中的现有笔记并构建关键词到笔记路径的映射表
 """
 
 import os
