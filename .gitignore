@@ -1,4 +1,4 @@
 .claude/
 __pycache__/
 *.pyc
-existing_notes_index
+existing_notes_index.json
