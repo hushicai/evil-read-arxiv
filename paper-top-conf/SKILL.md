@@ -1,5 +1,5 @@
 ---
-name: conf-papers
+name: paper-top-conf
 description: 顶级会议论文搜索推荐 - 搜索 CVPR/ICCV/ECCV/ICLR/AAAI/NeurIPS/ICML 等顶会论文
 ---
 You are the Conference Paper Recommender for OrbitOS.
@@ -15,10 +15,10 @@ You are the Conference Paper Recommender for OrbitOS.
 
 ## 配置说明
 
-本 skill 使用独立配置文件 `conf-papers.yaml`（位于 skill 目录下），与 start-my-day 的 `research_interests.yaml` 完全独立：
+本 skill 使用独立配置文件 `paper-top-conf.yaml`（位于 skill 目录下），与 start-my-day 的 `research_interests.yaml` 完全独立：
 
 ```yaml
-# conf-papers.yaml
+# paper-top-conf.yaml
 keywords:           # 感兴趣的关键词（用于筛选论文标题）
   - "large language model"
   - "LLM"
@@ -40,11 +40,11 @@ top_n: 10                    # 返回论文数量
 ## 步骤1：解析参数
 
 1. **提取年份**（可选，默认从配置读取）
-   - 从用户输入中提取年份，如 `/conf-papers 2025`
+   - 从用户输入中提取年份，如 `/paper-top-conf 2025`
    - 未指定时使用配置中的 `conf_papers.default_year`
 
 2. **提取会议名**（可选，默认从配置读取）
-   - 用户可以指定会议，如 `/conf-papers 2025 ICLR,CVPR`
+   - 用户可以指定会议，如 `/paper-top-conf 2025 ICLR,CVPR`
    - 未指定时使用配置中的 `conf_papers.default_conferences`
    - 注意：ICCV 在偶数年、ECCV 在奇数年可能无结果（双年会议），正常跳过
 
@@ -66,13 +66,13 @@ python scripts/scan_existing_notes.py \
 ```bash
 cd "$SKILL_DIR"
 python scripts/search_conf_papers.py \
-  --config "$SKILL_DIR/conf-papers.yaml" \
+  --config "$SKILL_DIR/paper-top-conf.yaml" \
   --output conf_papers_filtered.json \
   --year {年份} \
   --conferences "{会议列表，逗号分隔}"
 ```
 
-> 注意：`--config` 默认指向 skill 目录下的 `conf-papers.yaml`，通常不需要手动指定。`--year` 和 `--conferences` 未指定时使用配置文件中的默认值。
+> 注意：`--config` 默认指向 skill 目录下的 `paper-top-conf.yaml`，通常不需要手动指定。`--year` 和 `--conferences` 未指定时使用配置文件中的默认值。
 
 **脚本工作流**：
 1. **DBLP 搜索**：调用 DBLP API 获取指定会议和年份的全部论文
@@ -341,7 +341,7 @@ python scripts/link_keywords.py \
 
 # 与其他 skills 的区别
 
-## conf-papers (本skill)
+## paper-top-conf (本skill)
 - **目的**：搜索顶级会议论文，按年份推荐
 - **数据源**：DBLP + Semantic Scholar
 - **搜索范围**：指定年份的指定会议
@@ -357,17 +357,17 @@ python scripts/link_keywords.py \
 
 # 使用说明
 
-当用户输入 `/conf-papers` 时，按以下步骤执行：
+当用户输入 `/paper-top-conf` 时，按以下步骤执行：
 
 **参数支持**：
 - 可选：年份（如 `2025`），未指定时使用配置中的 `conf_papers.default_year`
 - 可选：会议名（如 `ICLR,CVPR`，逗号分隔），未指定时使用配置中的 `conf_papers.default_conferences`
 - 搜索关键词和排除关键词均从 `conf_papers` 配置段读取
 - 示例：
-  - `/conf-papers` — 使用配置中的默认年份和会议
-  - `/conf-papers 2025` — 搜索配置中默认会议的 2025 年论文
-  - `/conf-papers 2024 ICLR` — 仅搜索 ICLR 2024
-  - `/conf-papers 2024 CVPR,NeurIPS` — 搜索 CVPR 和 NeurIPS 2024
+  - `/paper-top-conf` — 使用配置中的默认年份和会议
+  - `/paper-top-conf 2025` — 搜索配置中默认会议的 2025 年论文
+  - `/paper-top-conf 2024 ICLR` — 仅搜索 ICLR 2024
+  - `/paper-top-conf 2024 CVPR,NeurIPS` — 搜索 CVPR 和 NeurIPS 2024
 
 ## 自动执行流程
 
@@ -387,7 +387,7 @@ python scripts/link_keywords.py \
    ```bash
    cd "$SKILL_DIR"
    python scripts/search_conf_papers.py \
-     --config "$SKILL_DIR/conf-papers.yaml" \
+     --config "$SKILL_DIR/paper-top-conf.yaml" \
      --output conf_papers_filtered.json \
      --year {年份} \
      --conferences "{会议列表}" \

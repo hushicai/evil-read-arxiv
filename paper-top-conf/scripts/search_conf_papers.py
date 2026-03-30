@@ -23,7 +23,7 @@ def title_to_note_filename(title: str) -> str:
     """将论文标题转换为 Obsidian 笔记文件名（与 generate_note.py 保持一致）。
 
     使用与 paper-analyze/scripts/generate_note.py 完全相同的规则，
-    确保 conf-papers 生成的 wikilink 路径能正确指向 paper-analyze 创建的文件。
+    确保 paper-top-conf 生成的 wikilink 路径能正确指向 paper-analyze 创建的文件。
     """
     filename = re.sub(r'[ /\\:*?"<>|]+', '_', title).strip('_')
     return filename
@@ -282,10 +282,10 @@ def search_all_conferences(year: int, venues: List[str], max_per_venue: int = 10
 
 def load_conf_papers_config(config_path: str) -> Dict:
     """
-    从 conf-papers.yaml 加载专用配置。
+    从 paper-top-conf.yaml 加载专用配置。
 
     Args:
-        config_path: conf-papers.yaml 路径
+        config_path: paper-top-conf.yaml 路径
 
     Returns:
         {keywords: [...], excluded_keywords: [...], default_year, default_conferences, top_n}
@@ -296,7 +296,7 @@ def load_conf_papers_config(config_path: str) -> Dict:
         with open(config_path, 'r', encoding='utf-8') as f:
             cp = yaml.safe_load(f) or {}
     except Exception as e:
-        logger.error("Error loading conf-papers config: %s", e)
+        logger.error("Error loading paper-top-conf config: %s", e)
         cp = {}
 
     return {
@@ -311,11 +311,11 @@ def load_conf_papers_config(config_path: str) -> Dict:
 def lightweight_keyword_filter(papers: List[Dict], cp_config: Dict) -> List[Dict]:
     """
     第一阶段：仅凭标题关键词做轻量相关性过滤
-    使用 conf-papers.yaml 中的关键词
+    使用 paper-top-conf.yaml 中的关键词
 
     Args:
         papers: DBLP 拉取的全部论文
-        cp_config: conf-papers 专用配置
+        cp_config: paper-top-conf 专用配置
 
     Returns:
         通过关键词过滤的论文列表
@@ -540,11 +540,11 @@ def calculate_popularity_score(paper: Dict) -> float:
 def filter_and_score_papers(papers: List[Dict], cp_config: Dict, top_n: int = 10) -> List[Dict]:
     """
     对论文进行完整的三维评分（相关性+热门度+质量），排序取 top N
-    使用 conf-papers.yaml 的关键词构建虚拟 domain 用于评分
+    使用 paper-top-conf.yaml 的关键词构建虚拟 domain 用于评分
 
     Args:
         papers: 论文列表（已经过 S2 补充）
-        cp_config: conf-papers 专用配置
+        cp_config: paper-top-conf 专用配置
         top_n: 返回前 N 篇
 
     Returns:
@@ -619,13 +619,13 @@ def filter_and_score_papers(papers: List[Dict], cp_config: Dict, top_n: int = 10
 # ---------------------------------------------------------------------------
 
 def main():
-    # 默认配置路径：脚本所在 skill 目录下的 conf-papers.yaml
-    default_config = os.path.join(os.path.dirname(_SCRIPT_DIR), 'conf-papers.yaml')
+    # 默认配置路径：脚本所在 skill 目录下的 paper-top-conf.yaml
+    default_config = os.path.join(os.path.dirname(_SCRIPT_DIR), 'paper-top-conf.yaml')
 
     parser = argparse.ArgumentParser(description='Search top conference papers via DBLP + Semantic Scholar')
     parser.add_argument('--config', type=str,
                         default=default_config,
-                        help='Path to conf-papers.yaml config file')
+                        help='Path to paper-top-conf.yaml config file')
     parser.add_argument('--output', type=str, default='conf_papers_filtered.json',
                         help='Output JSON file path')
     parser.add_argument('--year', type=int, default=None,
@@ -652,7 +652,7 @@ def main():
         logger.error("配置文件不存在: %s", args.config)
         return 1
 
-    logger.info("Loading conf-papers config from: %s", args.config)
+    logger.info("Loading paper-top-conf config from: %s", args.config)
     cp_config = load_conf_papers_config(args.config)
     logger.info("Config: %d keywords, %d excluded",
                 len(cp_config['keywords']), len(cp_config['excluded_keywords']))
@@ -767,7 +767,7 @@ def main():
         p.pop('categories', None)
         p.pop('summary', None)  # 保留 abstract，去掉重复的 summary
         # 为每篇论文补充 note_filename，与 generate_note.py 的文件名规则保持一致
-        # 这样 conf-papers 生成的 wikilink 可以直接使用此字段，无需自行推断
+        # 这样 paper-top-conf 生成的 wikilink 可以直接使用此字段，无需自行推断
         p['note_filename'] = title_to_note_filename(p.get('title', ''))
 
     # 准备输出

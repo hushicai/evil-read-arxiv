@@ -15,7 +15,7 @@
 
 | 日期 | 版本 | 更新内容 |
 |------|------|----------|
-| 2026-03-13 | v1.1 | 新增 `conf-papers` 技能：支持搜索 CVPR/ICCV/ECCV/ICLR/AAAI/NeurIPS/ICML 等顶级会议论文，基于 DBLP + Semantic Scholar 双数据源，独立配置文件，三维评分推荐 |
+| 2026-03-13 | v1.1 | 新增 `paper-top-conf` 技能：支持搜索 CVPR/ICCV/ECCV/ICLR/AAAI/NeurIPS/ICML 等顶级会议论文，基于 DBLP + Semantic Scholar 双数据源，独立配置文件，三维评分推荐 |
 | 2026-03-01 | v1.0 | 初始版本：start-my-day 每日推荐、paper-analyze 论文分析、paper-extract-images 图片提取、paper-search 论文搜索 |
 
 ## 功能特点
@@ -52,10 +52,10 @@
 - 支持按标题、作者、关键词、领域搜索
 - 相关性评分排序
 
-### 5. conf-papers - 顶会论文搜索推荐
+### 5. paper-top-conf - 顶会论文搜索推荐
 - 搜索 CVPR/ICCV/ECCV/ICLR/AAAI/NeurIPS/ICML 等顶级会议论文
 - 基于 DBLP API 获取论文列表 + Semantic Scholar 补充引用和摘要
-- 独立配置文件 `conf-papers.yaml`（关键词、排除词、默认年份/会议）
+- 独立配置文件 `paper-top-conf.yaml`（关键词、排除词、默认年份/会议）
 - 两阶段过滤：标题关键词轻量筛选 → S2 补充 → 三维评分（相关性 40% + 热门度 40% + 质量 20%）
 - 前三篇论文自动生成详细分析（需有 arXiv ID）
 
@@ -252,9 +252,9 @@ evil-read-arxiv/
 │       └── extract_images.py # 图片提取脚本
 ├── paper-search/             # 论文搜索技能
 │   └── SKILL.md
-└── conf-papers/              # 顶会论文搜索推荐技能
+└── paper-top-conf/              # 顶会论文搜索推荐技能
     ├── SKILL.md              # 技能定义文件
-    ├── conf-papers.yaml      # 独立配置（关键词、会议、年份）
+    ├── paper-top-conf.yaml      # 独立配置（关键词、会议、年份）
     └── scripts/
         └── search_conf_papers.py  # DBLP搜索 + S2补充 + 评分
 ```
