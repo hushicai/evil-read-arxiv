@@ -1,5 +1,5 @@
 ---
-name: extract-paper-images
+name: paper-extract-images
 description: 从论文中提取图片，优先从arXiv源码包获取真正的论文图
 allowed-tools: Read, Write, Bash
 ---
@@ -145,7 +145,7 @@ images/question_synthesis_pipeline_page1.png (pdf-figure)
 ## 调用方式
 
 ```bash
-/extract-paper-images 2510.24701
+/paper-extract-images 2510.24701
 ```
 
 ## 返回内容

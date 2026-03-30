@@ -213,7 +213,7 @@ cat conf_papers_filtered.json
 - 在推荐笔记的"详细报告"字段引用已有笔记
 
 如果没有笔记 **且** 论文有 arXiv ID：
-- 调用 `extract-paper-images` 提取图片
+- 调用 `paper-extract-images` 提取图片
 - 调用 `paper-analyze` 生成详细报告
 - 在推荐笔记中添加图片和详细报告链接
 
@@ -418,7 +418,7 @@ python scripts/link_keywords.py \
        # 使用已有的笔记路径
    elif 有 arXiv ID:
        # 提取第一张图片
-       /extract-paper-images [论文ID]
+       /paper-extract-images [论文ID]
        # 生成详细分析报告
        /paper-analyze [论文ID]
    else:
@@ -438,5 +438,5 @@ python scripts/link_keywords.py \
 - PyYAML
 - 网络连接（DBLP API + Semantic Scholar API）
 - `start-my-day` skill（复用 scan_existing_notes.py, link_keywords.py, search_arxiv.py 的评分函数）
-- `extract-paper-images` skill（提取论文图片，仅限有 arXiv ID 的论文）
+- `paper-extract-images` skill（提取论文图片，仅限有 arXiv ID 的论文）
 - `paper-analyze` skill（生成详细报告，仅限有 arXiv ID 的论文）

@@ -348,11 +348,11 @@ Today's {paper_count} recommended papers focus on **{direction1}**, **{direction
 - 使用已有笔记路径作为 wikilink
 - 在推荐笔记的"详细报告"字段引用已有笔记
 - 检查是否需要提取图片（如果没有 images 目录或 images 目录为空）
-  - 如果需要图片：调用 `extract-paper-images`
+  - 如果需要图片：调用 `paper-extract-images`
   - 如果已有图片：使用现有图片
 
 如果没有笔记：
-- 调用 `extract-paper-images` 提取图片
+- 调用 `paper-extract-images` 提取图片
 - 调用 `paper-analyze` 生成详细报告
 - 在推荐笔记中添加图片和详细报告链接
 
@@ -567,7 +567,7 @@ python scripts/link_keywords.py \
        # 只提取图片（如果没有图片的话）
    else:
        # 提取第一张图片
-       /extract-paper-images [论文ID]
+       /paper-extract-images [论文ID]
 
        # 生成详细分析报告
        /paper-analyze [论文ID]
@@ -593,7 +593,7 @@ python scripts/link_keywords.py \
 - PyYAML（用于读取研究兴趣配置文件）
 - 网络连接（访问 arXiv API）
 - `20_Research/Papers/` 目录（用于扫描现有笔记和保存详细报告）
-- `extract-paper-images` skill（用于提取论文图片）
+- `paper-extract-images` skill（用于提取论文图片）
 - `paper-analyze` skill（用于生成详细报告）
 
 ## 脚本说明

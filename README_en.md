@@ -34,7 +34,7 @@ This is a collection of Claude Code Skills for automating research paper search,
 - Auto-extract paper images and insert into notes
 - Update knowledge graph
 
-### 3. extract-paper-images - Paper Image Extraction
+### 3. paper-extract-images - Paper Image Extraction
 - Prefer extracting high-quality images from arXiv source packages
 - Fallback to PDF image extraction
 - Auto-generate image index
@@ -63,13 +63,13 @@ This is a collection of Claude Code Skills for automating research paper search,
    # Windows PowerShell
    Copy-Item -Recurse evil-read-arxiv\start-my-day $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-analyze $env:USERPROFILE\.claude\skills\
-   Copy-Item -Recurse evil-read-arxiv\extract-paper-images $env:USERPROFILE\.claude\skills\
+   Copy-Item -Recurse evil-read-arxiv\paper-extract-images $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-search $env:USERPROFILE\.claude\skills\
 
    # macOS/Linux
    cp -r evil-read-arxiv/start-my-day ~/.claude/skills/
    cp -r evil-read-arxiv/paper-analyze ~/.claude/skills/
-   cp -r evil-read-arxiv/extract-paper-images ~/.claude/skills/
+   cp -r evil-read-arxiv/paper-extract-images ~/.claude/skills/
    cp -r evil-read-arxiv/paper-search ~/.claude/skills/
    ```
 
@@ -207,7 +207,7 @@ This will:
 ### Extract Paper Images
 
 ```bash
-extract-paper-images 2602.12345
+paper-extract-images 2602.12345
 ```
 
 ### Search Existing Papers
@@ -236,7 +236,7 @@ evil-read-arxiv/
 │   └── scripts/
 │       ├── generate_note.py  # Generate note template
 │       └── update_graph.py   # Update knowledge graph
-├── extract-paper-images/      # Image extraction skill
+├── paper-extract-images/      # Image extraction skill
 │   ├── SKILL.md
 │   └── scripts/
 │       └── extract_images.py # Image extraction script

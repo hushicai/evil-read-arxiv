@@ -545,8 +545,8 @@ cat /tmp/paper_analysis/{1-introduction,2-joint-optimization,3-agent-swarm,5-eva
 
 #### 步骤3：复制图片
 ```bash
-# 使用extract-paper-images skill
-/extract-paper-images "$PAPER_ID" "$DOMAIN" "$TITLE"
+# 使用paper-extract-images skill
+/paper-extract-images "$PAPER_ID" "$DOMAIN" "$TITLE"
 ```
 
 #### 步骤4：生成笔记
@@ -1019,8 +1019,8 @@ python "scripts/generate_note.py" --paper-id "$PAPER_ID" --title "$TITLE" --auth
     echo "笔记生成脚本执行失败"
 
 # 提取图片
-# 调用 extract-paper-images skill
-# /extract-paper-images "$PAPER_ID" "$DOMAIN" "$TITLE" || \
+# 调用 paper-extract-images skill
+# /paper-extract-images "$PAPER_ID" "$DOMAIN" "$TITLE" || \
 #     echo "图片提取失败"
 ```
 
@@ -1049,8 +1049,8 @@ cat /tmp/paper_analysis/{1-introduction,2-joint-optimization,3-agent-swarm,5-eva
 
 #### 步骤3：复制图片
 ```bash
-# 使用extract-paper-images skill
-/extract-paper-images "$PAPER_ID" "$DOMAIN" "$TITLE"
+# 使用paper-extract-images skill
+/paper-extract-images "$PAPER_ID" "$DOMAIN" "$TITLE"
 ```
 
 #### 步骤4：生成笔记

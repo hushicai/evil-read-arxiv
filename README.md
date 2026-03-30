@@ -16,7 +16,7 @@
 | 日期 | 版本 | 更新内容 |
 |------|------|----------|
 | 2026-03-13 | v1.1 | 新增 `conf-papers` 技能：支持搜索 CVPR/ICCV/ECCV/ICLR/AAAI/NeurIPS/ICML 等顶级会议论文，基于 DBLP + Semantic Scholar 双数据源，独立配置文件，三维评分推荐 |
-| 2026-03-01 | v1.0 | 初始版本：start-my-day 每日推荐、paper-analyze 论文分析、extract-paper-images 图片提取、paper-search 论文搜索 |
+| 2026-03-01 | v1.0 | 初始版本：start-my-day 每日推荐、paper-analyze 论文分析、paper-extract-images 图片提取、paper-search 论文搜索 |
 
 ## 功能特点
 
@@ -41,7 +41,7 @@
 - 自动提取论文图片并插入笔记
 - 更新知识图谱
 
-### 3. extract-paper-images - 论文图片提取
+### 3. paper-extract-images - 论文图片提取
 - 优先从 arXiv 源码包提取高质量图片
 - 支持从 PDF 提取图片作为备选
 - 自动生成图片索引
@@ -77,13 +77,13 @@
    # Windows PowerShell
    Copy-Item -Recurse evil-read-arxiv\start-my-day $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-analyze $env:USERPROFILE\.claude\skills\
-   Copy-Item -Recurse evil-read-arxiv\extract-paper-images $env:USERPROFILE\.claude\skills\
+   Copy-Item -Recurse evil-read-arxiv\paper-extract-images $env:USERPROFILE\.claude\skills\
    Copy-Item -Recurse evil-read-arxiv\paper-search $env:USERPROFILE\.claude\skills\
 
    # macOS/Linux
    cp -r evil-read-arxiv/start-my-day ~/.claude/skills/
    cp -r evil-read-arxiv/paper-analyze ~/.claude/skills/
-   cp -r evil-read-arxiv/extract-paper-images ~/.claude/skills/
+   cp -r evil-read-arxiv/paper-extract-images ~/.claude/skills/
    cp -r evil-read-arxiv/paper-search ~/.claude/skills/
    ```
 
@@ -218,7 +218,7 @@ paper-analyze "论文标题"
 ### 提取论文图片
 
 ```bash
-extract-paper-images 2602.12345
+paper-extract-images 2602.12345
 ```
 
 ### 搜索已有论文
@@ -246,7 +246,7 @@ evil-read-arxiv/
 │   └── scripts/
 │       ├── generate_note.py  # 生成笔记模板
 │       └── update_graph.py   # 更新知识图谱
-├── extract-paper-images/     # 图片提取技能
+├── paper-extract-images/     # 图片提取技能
 │   ├── SKILL.md
 │   └── scripts/
 │       └── extract_images.py # 图片提取脚本

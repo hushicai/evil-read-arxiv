@@ -64,13 +64,13 @@ Copy-Item config.yaml "$env:OBSIDIAN_VAULT_PATH\99_System\Config\research_intere
 # macOS/Linux
 cp -r evil-read-arxiv/start-my-day ~/.claude/skills/
 cp -r evil-read-arxiv/paper-analyze ~/.claude/skills/
-cp -r evil-read-arxiv/extract-paper-images ~/.claude/skills/
+cp -r evil-read-arxiv/paper-extract-images ~/.claude/skills/
 cp -r evil-read-arxiv/paper-search ~/.claude/skills/
 
 # Windows PowerShell
 Copy-Item -Recurse evil-read-arxiv\start-my-day $env:USERPROFILE\.claude\skills\
 Copy-Item -Recurse evil-read-arxiv\paper-analyze $env:USERPROFILE\.claude\skills\
-Copy-Item -Recurse evil-read-arxiv\extract-paper-images $env:USERPROFILE\.claude\skills\
+Copy-Item -Recurse evil-read-arxiv\paper-extract-images $env:USERPROFILE\.claude\skills\
 Copy-Item -Recurse evil-read-arxiv\paper-search $env:USERPROFILE\.claude\skills\
 ```
 
